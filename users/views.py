@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 # Create your views here.
+#here we register the user
 def register(request):
     if request.method=='POST':
         form=UserRegisterForm(request.POST)
@@ -14,6 +15,7 @@ def register(request):
     else:
         form=UserRegisterForm()
     return render(request,'users/register.html',{'form':form})
+#here we create the profile of registerd user and can be edited when loggedin
 @login_required
 def profile(request):
     if request.method=='POST':
